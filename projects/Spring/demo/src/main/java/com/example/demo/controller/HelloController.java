@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,15 @@ public class HelloController {
         list.add(name);
         model.addAttribute("nameList", list);
         model.addAttribute("currentTime", service.selectDbTime());
+        return "home";
+    }
+
+    @RequestMapping("/hello")
+    public String SayHello2(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model)
+    {
+        List<String> list = new ArrayList<>();
+        list.add(name);
+        model.addAttribute("nameList", list);
         return "home";
     }
 }
